@@ -19,3 +19,8 @@ This pulls a card from a  13 card version of a [Deck of Many Things](https://www
 !deck22
 ```
 This pulls a card from the full 22 card version of a [Deck of Many Things](https://www.dndbeyond.com/magic-items/deck-of-many-things)
+
+```
+!commands
+```
+Displays a list of available commands
