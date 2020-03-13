@@ -15,7 +15,7 @@ client = commands.Bot(command_prefix='!')
 
 
 def d(x):
-    return random.randint(1, x + 1)
+    return random.randint(1, x)
 
 
 @client.event
@@ -50,9 +50,13 @@ async def on_message(message):  # Say Hi to the bot!
                 '{0.author.mention}, you pull a card from the Deck of Many Things...\nYou have selected the ' + cardName + ':\nThe Card of the ' + cardDesc).format(
             message))
 
+        #TODO: KEEP TRACK OF USER DECK csv? add !reset command
+
     if message.content.startswith('!roll'):  # roll some dice & add modifiers
         channel = message.channel
         roll = str(message.content).split(' ')[1]
+        roll = roll.split('+')[0]
+        roll = roll.split('-')[0]
         numDice = int(roll.split('d')[0])
         diceVal = int(roll.split('d')[-1])
         diceResults = []
@@ -71,9 +75,9 @@ async def on_message(message):  # Say Hi to the bot!
                 for x in diceResults:
                     total += x
                 if '+' in message.content:
-                    total += int(message.content[-1])
+                    total += int(str(message.content).split('+')[-1])
                 elif '-' in message.content:
-                    total -= int(message.content[-1])
+                    total -= int(str(message.content).split('-')[-1])
                 else:
                     total += 0
 
