@@ -8,6 +8,7 @@ import random
 import pandas as pd
 from discord.ext import commands
 import config
+import asyncio
 
 TOKEN = config.token
 
@@ -21,7 +22,6 @@ def d(x):
 @client.event
 async def on_ready():
     print('Bot is ready.')
-
 
 @client.event
 async def on_message(message):  # Say Hi to the bot!
